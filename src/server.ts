@@ -1,5 +1,5 @@
 import app from "./app";
-import AppDataSource from "./data-source";
+import { AppDataSource } from "./data-source";
 
 AppDataSource.initialize()
   .then(() => {
@@ -8,6 +8,6 @@ AppDataSource.initialize()
       console.log("Server is running");
     });
   })
-  .catch((err) => {
+  .catch((err: any) => {
     console.log(err);
   });

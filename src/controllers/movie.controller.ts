@@ -14,17 +14,17 @@ const readMovies = async (req: Request, res: Response): Promise<Response> => {
 };
 
 const updateMovies = async (req: Request, res: Response): Promise<Response> => {
-  const { id } = res.locals;
+  const { foundMovie } = res.locals;
 
   const payload = req.body;
 
-  const movieUpdated = await movieServices.update(id, payload);
+  const movieUpdated = await movieServices.update(foundMovie, payload);
 
   return res.status(200).json(movieUpdated);
 };
 
 const deleteMovies = async (req: Request, res: Response): Promise<Response> => {
-  await movieServices.destroy(res.locals.id);
+  await movieServices.destroy(res.locals.foundMovie);
 
   return res.status(204).send();
 };

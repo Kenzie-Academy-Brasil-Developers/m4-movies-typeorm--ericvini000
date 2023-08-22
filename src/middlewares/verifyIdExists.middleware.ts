@@ -7,13 +7,13 @@ export default async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  const { id } = req.params;
+  const id = Number(req.params.id);
 
-  const movieExists = await movieRepository.findOneBy({ id: parseInt(id) });
+  const foundMovie = await movieRepository.findOneBy({ id });
 
-  if (!movieExists) throw new AppError("Movie not exists", 404);
+  if (!foundMovie) throw new AppError("Movie not found", 404);
 
-  res.locals.id = parseInt(id);
+  res.locals = { ...res.locals, id };
 
   return next();
 };

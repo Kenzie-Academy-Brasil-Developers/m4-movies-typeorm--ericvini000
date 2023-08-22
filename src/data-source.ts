@@ -32,6 +32,6 @@ const dataSourceConfig = (): DataSourceOptions => {
   };
 };
 
-const AppDataSouce: DataSource = new DataSource(dataSourceConfig());
+const AppDataSource: DataSource = new DataSource(dataSourceConfig());
 
-export default AppDataSouce;
+export { AppDataSource };

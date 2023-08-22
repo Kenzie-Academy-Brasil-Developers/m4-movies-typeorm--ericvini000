@@ -2,28 +2,21 @@ import { movieRepository } from "../repositories";
 
 const create = async (payload: any) => {
   const movieCreated = await movieRepository.create(payload);
-
   await movieRepository.save(movieCreated);
 
   return movieCreated;
 };
 
 const read = async () => {
-  const allMovies = await movieRepository.find();
-
-  return allMovies;
+  return await movieRepository.find();
 };
 
-const update = async (id: number, payload: any) => {
-  const movieUpdated = await movieRepository.update(id, payload);
-
-  return movieUpdated;
+const update = async (product: any, payload: any) => {
+  return await movieRepository.save({ ...product, ...payload });
 };
 
-const destroy = async (id: number): Promise<void> => {
-  await movieRepository.delete(id);
-
-  return;
+const destroy = async (product: any): Promise<void> => {
+  await movieRepository.remove(product);
 };
 
 export default { create, read, update, destroy };

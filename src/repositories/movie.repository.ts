@@ -1,4 +1,4 @@
-import AppDataSouce from "../data-source";
+import { AppDataSource } from "../data-source";
 import { Movie } from "../entities";
 
-export default AppDataSouce.getRepository(Movie);
+export default AppDataSource.getRepository(Movie);
