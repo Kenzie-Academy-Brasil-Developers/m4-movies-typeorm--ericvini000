@@ -15,5 +15,6 @@ export default (
   if (err instanceof AppError) {
     return res.status(err.statusCode).json(err.message);
   }
+
   return res.status(500).json({ message: "Internal Server Error" });
 };

@@ -1,3 +1,3 @@
-import movieRepo from "./movie.repository";
+import movieRepository from "./movie.repository";
 
-export { movieRepo };
+export { movieRepository };
