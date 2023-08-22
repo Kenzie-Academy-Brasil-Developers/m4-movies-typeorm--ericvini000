@@ -2,7 +2,7 @@ import { Router } from "express";
 
 const movieRouter: Router = Router();
 
-movieRouter.post("",);
+movieRouter.post("");
 
 movieRouter.get("");
 

@@ -11,7 +11,7 @@ export default async (
 
   const movieExists = await movieRepository.findOneBy({ id: parseInt(id) });
 
-  if (movieExists) throw new AppError("Movie already exists", 409);
+  if (!movieExists) throw new AppError("Movie not exists", 404);
 
   return next();
 };
