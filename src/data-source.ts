@@ -1,6 +1,6 @@
 import "reflect-metadata";
+import "dotenv/config";
 import { DataSource, DataSourceOptions } from "typeorm";
-import "dotenv";
 import "express-async-errors";
 import path from "path";
 

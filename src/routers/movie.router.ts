@@ -1,13 +1,19 @@
 import { Router } from "express";
+import {
+  createMovie,
+  deleteMovies,
+  readMovies,
+  updateMovies,
+} from "../controllers";
 
 const movieRouter: Router = Router();
 
-movieRouter.post("");
+movieRouter.post("", createMovie);
 
-movieRouter.get("");
+movieRouter.get("", readMovies);
 
-movieRouter.patch("/:id");
+movieRouter.patch("/:id", updateMovies);
 
-movieRouter.delete("/:id");
+movieRouter.delete("/:id", deleteMovies);
 
 export default movieRouter;

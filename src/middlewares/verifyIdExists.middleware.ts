@@ -13,5 +13,7 @@ export default async (
 
   if (!movieExists) throw new AppError("Movie not exists", 404);
 
+  res.locals.id = parseInt(id);
+
   return next();
 };
