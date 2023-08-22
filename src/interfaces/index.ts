@@ -1,3 +1,8 @@
-import { TMovie, TMovieCreate, TMovieUpdate } from "./movie.interfaces";
+import {
+  TMovie,
+  TMovieCreate,
+  TMovieUpdate,
+  TMovieArray,
+} from "./movie.interfaces";
 
-export { TMovie, TMovieCreate, TMovieUpdate };
+export { TMovie, TMovieCreate, TMovieUpdate, TMovieArray };

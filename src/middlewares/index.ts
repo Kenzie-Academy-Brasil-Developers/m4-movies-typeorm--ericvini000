@@ -1,3 +1,3 @@
 import errorHandler from "./errorHandler.middleware";
 
-export { errorHandler };
+export default { errorHandler };
