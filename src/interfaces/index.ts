@@ -5,4 +5,13 @@ import {
   TMovieArray,
 } from "./movie.interfaces";
 
-export { TMovie, TMovieCreate, TMovieUpdate, TMovieArray };
+import { IPagination, IReadReturn } from "./pagination.interfaces";
+
+export {
+  TMovie,
+  TMovieCreate,
+  TMovieUpdate,
+  TMovieArray,
+  IPagination,
+  IReadReturn,
+};

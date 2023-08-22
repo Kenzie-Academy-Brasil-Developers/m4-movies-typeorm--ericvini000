@@ -13,7 +13,7 @@ export default async (
 
   if (!foundMovie) throw new AppError("Movie not found", 404);
 
-  res.locals = { ...res.locals, id };
+  res.locals = { ...res.locals, id, foundMovie };
 
   return next();
 };

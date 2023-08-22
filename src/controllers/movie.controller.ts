@@ -1,14 +1,15 @@
 import { Request, Response } from "express";
-import movieServices from "../services/movie.service";
+import { movieServices } from "../services";
+import { TMovie, TMovieArray, TMovieCreate, TMovieUpdate } from "../interfaces";
 
 const createMovie = async (req: Request, res: Response): Promise<Response> => {
-  const movieCreated = await movieServices.create(req.body);
+  const movieCreated: TMovieCreate = await movieServices.create(req.body);
 
   return res.status(201).json(movieCreated);
 };
 
 const readMovies = async (req: Request, res: Response): Promise<Response> => {
-  const listMovies = await movieServices.read();
+  const listMovies:TMovieArray = await movieServices.read();
 
   return res.status(200).json(listMovies);
 };
@@ -16,9 +17,9 @@ const readMovies = async (req: Request, res: Response): Promise<Response> => {
 const updateMovies = async (req: Request, res: Response): Promise<Response> => {
   const { foundMovie } = res.locals;
 
-  const payload = req.body;
+  const payload: TMovieUpdate = req.body;
 
-  const movieUpdated = await movieServices.update(foundMovie, payload);
+  const movieUpdated: TMovie = await movieServices.update(foundMovie, payload);
 
   return res.status(200).json(movieUpdated);
 };
