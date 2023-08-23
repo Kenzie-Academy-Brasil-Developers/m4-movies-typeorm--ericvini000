@@ -18,17 +18,20 @@ const create = async (payload: TMovieCreate): Promise<TMovie> => {
 const read = async ({
   page,
   perPage,
-  order,
-  sort,
+  orderValue,
+  sortValue,
   nextPage,
   prevPage,
 }: IPagination): Promise<IReadReturn<TMovieArray>> => {
   const [movies, count]: Array<TMovieArray | number> =
     await movieRepository.findAndCount({
-      order: { [sort]: order },
+      order: { [sortValue]: orderValue },
       skip: page, //offset
       take: perPage, //limit
     });
+
+  console.log(page);
+  console.log(prevPage);
 
   return {
     prevPage: page <= 1 ? null : prevPage,

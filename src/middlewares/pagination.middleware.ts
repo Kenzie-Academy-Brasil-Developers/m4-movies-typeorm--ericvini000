@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
 export default (req: Request, res: Response, next: NextFunction): void => {
-  const queryPerPage = Number(req.query);
-  const queryPage = Number(req.query);
+  const queryPerPage = Number(req.query.perPage);
+  const queryPage = Number(req.query.page);
 
   const perPage: number =
     queryPerPage && queryPerPage <= 5 && queryPerPage > 0 ? queryPerPage : 5;
@@ -16,7 +16,7 @@ export default (req: Request, res: Response, next: NextFunction): void => {
   }&perPage=${perPage}`;
 
   const pagination = {
-    page: perPage * (page - 1),
+    page: (page - 1) * perPage,
     perPage,
     nextPage,
     prevPage,

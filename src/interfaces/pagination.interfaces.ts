@@ -8,8 +8,8 @@ export interface IReadReturn<I> {
 export interface IPagination {
   page: number;
   perPage: number;
-  order: string;
-  sort: string;
+  orderValue: string;
+  sortValue: string;
   nextPage: string | null;
   prevPage: string | null;
 }

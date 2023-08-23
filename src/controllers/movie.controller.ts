@@ -15,7 +15,9 @@ const createMovie = async (req: Request, res: Response): Promise<Response> => {
 };
 
 const readMovies = async (req: Request, res: Response): Promise<Response> => {
-  const listMovies: IReadReturn<TMovieArray> = await movieServices.read(res.locals.pagination);
+  const listMovies: IReadReturn<TMovieArray> = await movieServices.read(
+    res.locals.pagination
+  );
 
   return res.status(200).json(listMovies);
 };
