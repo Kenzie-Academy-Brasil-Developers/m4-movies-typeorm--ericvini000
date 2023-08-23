@@ -1,4 +1,11 @@
-import { TMovie, TMovieArray, TMovieCreate, TMovieUpdate } from "../interfaces";
+import {
+  IPagination,
+  IReadReturn,
+  TMovie,
+  TMovieArray,
+  TMovieCreate,
+  TMovieUpdate,
+} from "../interfaces";
 import { movieRepository } from "../repositories";
 
 const create = async (payload: TMovieCreate): Promise<TMovie> => {
@@ -8,8 +15,27 @@ const create = async (payload: TMovieCreate): Promise<TMovie> => {
   return movieCreated;
 };
 
-const read = async (): Promise<TMovieArray> => {
-  return await movieRepository.find();
+const read = async ({
+  page,
+  perPage,
+  order,
+  sort,
+  nextPage,
+  prevPage,
+}: IPagination): Promise<IReadReturn<TMovieArray>> => {
+  const [movies, count]: Array<TMovieArray | number> =
+    await movieRepository.findAndCount({
+      order: { [sort]: order },
+      skip: page, //offset
+      take: perPage, //limit
+    });
+
+  return {
+    prevPage: page <= 1 ? null : prevPage,
+    nextPage: count - page <= perPage ? null : nextPage,
+    count,
+    data: movies,
+  };
 };
 
 const update = async (

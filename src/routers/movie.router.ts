@@ -17,7 +17,7 @@ movieRouter.post(
   createMovie
 );
 
-movieRouter.get("", readMovies);
+movieRouter.get("", middlewares.pagination, middlewares.order, readMovies);
 
 movieRouter.patch(
   "/:id",
