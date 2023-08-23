@@ -30,9 +30,6 @@ const read = async ({
       take: perPage, //limit
     });
 
-  console.log(page);
-  console.log(prevPage);
-
   return {
     prevPage: page <= 1 ? null : prevPage,
     nextPage: count - page <= perPage ? null : nextPage,

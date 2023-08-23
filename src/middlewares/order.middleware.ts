@@ -9,7 +9,7 @@ export default (req: Request, res: Response, next: NextFunction): void => {
   ];
 
   const sortValue = sort && sortOptions.includes(sort) ? sort : "id";
-  const orderValue = order && orderOptions.includes(order) ? order : "asc";
+  const orderValue = order && sort && orderOptions.includes(order) ? order : "asc";
 
   res.locals.pagination = { ...res.locals.pagination, sortValue, orderValue };
   return next();

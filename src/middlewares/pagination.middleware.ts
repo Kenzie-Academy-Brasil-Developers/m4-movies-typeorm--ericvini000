@@ -8,11 +8,11 @@ export default (req: Request, res: Response, next: NextFunction): void => {
     queryPerPage && queryPerPage <= 5 && queryPerPage > 0 ? queryPerPage : 5;
   const page: number = queryPage && queryPage > 1 ? queryPage : 1;
 
-  const prevPage: string = `https://localhost:3000/movies?page=${
-    page - 1
+  const prevPage: string = `http://localhost:3000/movies?page=${
+    page-1
   }&perPage=${perPage}`;
-  const nextPage: string = `https://localhost:3000/movies?page=${
-    page + 1
+  const nextPage: string = `http://localhost:3000/movies?page=${
+    page+1
   }&perPage=${perPage}`;
 
   const pagination = {
